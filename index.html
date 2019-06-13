@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1 class="brand"><span>Bbaccs Web Design</span></h1>
-        <div class="wrapper animated bounceInRight">
+        <div class="wrapper">
             <div class="company-info">
                 <h3>BBaccs Web Design</h3>
                 <ul>
@@ -23,26 +23,27 @@
             </div>
             <div class="contact">
                 <h3>Email Me</h3>
-                <form>
+                <form id="contactForm">
+                    <!-- @To do Email Validation -->
                     <p>
                         <label>Name</label>
-                        <input type="text" name="name">
+                        <input type="text" name="name" id="name">
                     </p>
                     <p>
                         <label>Company</label>
-                        <input type="text" name="company">
+                        <input type="text" name="company" id="company">
                     </p>
                     <p>
                         <label>Email Address</label>
-                        <input type="text" name="email">
+                        <input type="email" name="email" id="email">
                     </p>
                     <p>
                         <label>Phone Number</label>
-                        <input type="text" name="phone">
+                        <input type="text" name="phone" id="phone">
                     </p>
                     <p class="full">
                         <label>Message</label>
-                        <textarea name="message" rows="5"></textarea>
+                        <textarea name="message" rows="5" id="message"></textarea>
                     </p>
                     <p class="full">
                         <button>Submit</button>
@@ -52,4 +53,7 @@
         </div>
     </div>
 </body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script src="main.js"></script>
 </html>
