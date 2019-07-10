@@ -1,51 +1,33 @@
+// Listen for form submit
+document.getElementById('contactForm').addEventListener('submit', submitForm);
 
-// // Firebase configuration
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyCyBbq8KjVhoJ20-sqifod7XbefRNXBNcw",
-//     authDomain: "contactform-3bd7a.firebaseapp.com",
-//     databaseURL: "https://contactform-3bd7a.firebaseio.com",
-//     projectId: "contactform-3bd7a",
-//     storageBucket: "contactform-3bd7a.appspot.com",
-//     messagingSenderId: "876985572212",
-//     appId: "1:876985572212:web:97ba17b207e672ce"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
 
-//   // Reference messages collection
-//   var messagesRef = firebase.database().ref('messages');
+// Submit form
+function submitForm(e) {
+    // Get values
+    const contactForm = document.querySelector('#contactForm'),
+            nameVal = contactForm.name.value,
+            companyVal = contactForm.company.value,
+            emailVal = contactForm.email.value,
+            phoneVal = contactForm.phone.value,
+            messageVal = contactForm.message.value;
 
-// // Listen for form submit
-// document.getElementById('contactForm').addEventListener('submit', submitForm);
+    // Regexpressions, form validation
+    const phoneValidation = /^([0-9]{3}[\- ]){2}[0-9]{4}$/,
+          lettersValidation = /^[a-z]{2}/gi,
+          numbersValidation = /[0-9]/;
 
-// // Submit form
-// function submitForm(e) {
-//     e.preventDefault();
-
-//     // Get values
-//     var name = getInputVal('name');
-//     var email = getInputVal('email');
-//     var company = getInputVal('company');
-//     var phone = getInputVal('phone');
-//     var message = getInputVal('message');
-
-//     // console.log(name, email, company, phone, message);
-//     saveMessage(name, email, company, phone, message);
-// }
-
-// // Function tog et form values
-// function getInputVal(id) {
-//     return document.getElementById(id).value;
-// }
-
-// // Save message to firebase
-// function saveMessage(name, company, email, phone, message) {
-//     var newMessageRef = messagesRef.push();
-//         newMessageRef.set({
-//         name: name,
-//         company: company,
-//         email: email,
-//         phone: phone,
-//         message: message
-//     });
-// }
+    //Validate phone #, spaces at the end will be trimmed
+    if (!phoneValidation.test(phoneVal.trim())) {
+        alert(`If you choose to fill out a number, it can only contain spaces and '-' between numbers and must be propely formatted, 555-555-5555`);
+        e.preventDefault();
+    }
+    // Name must have at least two letters, and cannot contain numbers.
+    if (lettersValidation.test(nameVal) & !numbersValidation.test(nameVal)) {
+    } else {
+        alert('Name must start with at least two letters, and cannot contain numbers.');
+        e.preventDefault();
+    }
+    e.preventDefault();
+    // console.log(nameVal, companyVal, emailVal, phoneVal, messageVal);
+}
