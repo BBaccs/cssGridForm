@@ -28,6 +28,6 @@ function submitForm(e) {
         alert('Name must start with at least two letters, and cannot contain numbers.');
         e.preventDefault();
     }
-    e.preventDefault();
+
     // console.log(nameVal, companyVal, emailVal, phoneVal, messageVal);
 }
